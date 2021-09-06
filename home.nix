@@ -3,6 +3,8 @@
 {
   programs.home-manager.enable = true;
 
+  xdg.enable = true;
+
   home.username = "rafa";
   home.homeDirectory = "/Users/rafa";
 
@@ -26,8 +28,6 @@
     pkgs.tree-sitter
     pkgs.neovim-nightly
     pkgs.jq
-    pkgs.autojump
-    pkgs.bat
     pkgs.diff-so-fancy
 
     pkgs.gnupg
@@ -40,10 +40,53 @@
     pkgs.iStatMenus
   ];
 
+  programs.zsh = {
+    enable = true;
+    initExtra = ''
+      source ''${HOME}/.nix-profile/etc/profile.d/nix.sh
+      export NIX_PATH=$HOME/.nix-defexp/channels''${NIX_PATH:+:}$NIX_PATH
+    '';
+    dotDir = ".config/zsh";
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    enableSyntaxHighlighting = true;
+    history = {
+      ignoreDups = true;
+      path = "${config.xdg.dataHome}/zsh/zsh_history";
+    };
+    shellAliases = {
+      g = "git";
+      vi = "nvim";
+      ll = "ls -alh";
+
+      gw = "./gradlew";
+      uuid = "uuidgen | tr '[:upper:]' '[:lower:]' | pbcopy && pbpaste && echo";
+    };
+
+    sessionVariables = {
+      EDITOR = "nvim";
+      WORDCHARS = "*?_-.[]~=&;!#$%^(){}<>";
+      TERM = "xterm-256color";
+      PAGER = "less";
+      LESS = "--ignore-case --RAW-CONTROL-CHARS -FX";
+      CLICOLOR = "1";
+      LSCOLORS = "exfxcxdxbxegedabagacad";
+      GREP_OPTIONS = "--color=auto";
+      GREP_COLOR = "3;33";
+    };
+  };
+
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
   };
+
+  programs.autojump = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.bat.enable = true;
 
   programs.firefox = {
     enable = true;
