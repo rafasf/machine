@@ -3,6 +3,15 @@
 {
   programs.home-manager.enable = true;
 
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv = {
+      enable = true;
+      enableFlakes = true;
+    };
+  };
+
   xdg.enable = true;
 
   home.username = "rafa";
