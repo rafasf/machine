@@ -30,6 +30,7 @@
     pkgs.stow
     pkgs.git
     pkgs.ag
+    pkgs.fd
     pkgs.starship
     pkgs.graphviz
     pkgs.plantuml
@@ -37,15 +38,16 @@
     pkgs.tree-sitter
     pkgs.neovim-nightly
     pkgs.jq
-    pkgs.diff-so-fancy
+    pkgs.delta
+
+    pkgs.minikube
+    pkgs.docker-client
 
     pkgs.gnupg
     pkgs.pinentry_mac
     pkgs.yubikey-personalization
 
-    pkgs.Firefox
     pkgs.Rectangle
-    pkgs.Alfred
     pkgs.iStatMenus
   ];
 
@@ -70,7 +72,7 @@
     shellAliases = {
       g = "git";
       vi = "nvim";
-      ll = "ls -alh";
+      vim = "nvim";
 
       gw = "./gradlew";
       uuid = "uuidgen | tr '[:upper:]' '[:lower:]' | pbcopy && pbpaste && echo";
@@ -86,6 +88,7 @@
       LSCOLORS = "exfxcxdxbxegedabagacad";
       GREP_OPTIONS = "--color=auto";
       GREP_COLOR = "3;33";
+      FZF_DEFAULT_COMMAND = "fd --type f --hidden --follow --exclude .git";
     };
   };
 
@@ -94,11 +97,17 @@
     enableZshIntegration = true;
   };
 
-  programs.autojump = {
+  programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
   };
 
+  programs.lsd = {
+    enable = true;
+    enableAliases = true;
+  };
+
+  programs.git.delta.enable = true;
   programs.bat.enable = true;
 
   programs.firefox = {
