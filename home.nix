@@ -55,7 +55,7 @@
     enable = true;
     initExtra = ''
       source ''${HOME}/.nix-profile/etc/profile.d/nix.sh
-      export NIX_PATH=$HOME/.nix-defexp/channels''${NIX_PATH:+:}$NIX_PATH
+      export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
 
       export GPG_TTY="$(tty)"
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
