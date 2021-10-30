@@ -39,6 +39,7 @@
     pkgs.neovim-nightly
     pkgs.jq
     pkgs.delta
+    pkgs.comby
 
     pkgs.minikube
     pkgs.docker-client
