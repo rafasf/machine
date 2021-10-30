@@ -2,8 +2,8 @@
 
 let
   pname = "Firefox";
-  version = "91.0.2";
-  sha256 = "e8d112ce9bd26d9eadf1ecb84256cb9646440a55d4ef4594c5d28a168b254067";
+  version = "93.0";
+  sha256 = "31df9384a4c01b5fba9f3b7e2355b8ea1cd122bd71b36e4a0341c9d237701342";
 in
 stdenv.mkDerivation {
   inherit pname version sha256;
